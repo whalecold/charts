@@ -37,6 +37,13 @@ _config:
       mounts:
       - name: data
         path: /usr/share/elasticsearch/data
+      resources:
+        requests:
+          cpu: '0.25'
+          memory: 512Mi
+        limits:
+          cpu: '1'
+          memory: 2Gi
     containers:
     - imagePullPolicy: Always
       name: elasticsearch
@@ -52,13 +59,6 @@ _config:
         value: "-Djava.net.preferIPv4Stack=true -Xms512m -Xmx512m "
       - name: MINIMUM_MASTER_NODES
         value: 2
-      resources:
-        requests:
-          cpu: '0.25'
-          memory: 512Mi
-        limits:
-          cpu: '1'
-          memory: 2Gi
       resources:
         requests:
           cpu: '0.25'
